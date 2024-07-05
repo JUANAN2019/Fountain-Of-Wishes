@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Fontain of Wishis</string>
+    <string name="app_name">Fountain of Wishes</string>
+    <string name="inicar">Seleccionar</string>
 </resources>
