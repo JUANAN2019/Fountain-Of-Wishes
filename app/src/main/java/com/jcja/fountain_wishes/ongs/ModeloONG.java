@@ -1,11 +1,11 @@
-package com.jcja.fountain_wishes.fragment;
+package com.jcja.fountain_wishes.ongs;
 
 import com.jcja.fountain_wishes.app.AppConfig;
 
-public class Modelo3d {
+public class ModeloONG {
     private String id, titulo, descripcion, modelo, img;
-    public Modelo3d(){}
-    public Modelo3d(String id, String titulo, String descripcion, String modelo, String img){
+    public ModeloONG(){}
+    public ModeloONG(String id, String titulo, String descripcion, String modelo, String img){
         this.id = id;
         this.titulo = titulo;
         this.descripcion = descripcion;

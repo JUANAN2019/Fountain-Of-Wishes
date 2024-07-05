@@ -13,7 +13,7 @@
             android:orientation="vertical">
 
                 <LinearLayout
-                    android:id="@+id/fragment"
+                    android:id="@+id/listaong"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginStart="8dp"
@@ -25,11 +25,11 @@
                 </LinearLayout>
 
                 <Button
-                    android:id="@+id/button"
+                    android:id="@+id/select"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
-                    android:layout_below="@id/fragment"
-                    android:layout_alignStart="@id/fragment"
+                    android:layout_below="@id/listaong"
+                    android:layout_alignStart="@id/listaong"
                     android:layout_alignParentEnd="true"
                     android:layout_marginTop="-70dp"
                     android:text="@string/inicar" />

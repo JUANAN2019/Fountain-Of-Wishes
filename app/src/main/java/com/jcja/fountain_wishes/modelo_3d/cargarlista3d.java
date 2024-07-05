@@ -1,4 +1,4 @@
-package com.jcja.fountain_wishes.fragment;
+package com.jcja.fountain_wishes.modelo_3d;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -53,7 +53,7 @@ public class cargarlista3d extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootlista3d = inflater.inflate(R.layout.fragment_list, container, false);
-        lv = rootlista3d.findViewById(R.id.listahora);
+        lv = rootlista3d.findViewById(R.id.listafuentes);
         adapter = new adapterlista3D(getContext(), getActivity(), devuelto);
         lv.setAdapter(adapter);
         return rootlista3d;

@@ -1,4 +1,4 @@
-package com.jcja.fountain_wishes.fragment;
+package com.jcja.fountain_wishes.modelo_3d;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
