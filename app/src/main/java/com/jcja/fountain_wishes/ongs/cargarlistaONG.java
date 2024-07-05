@@ -53,7 +53,7 @@ public class cargarlistaONG extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootlistaOng = inflater.inflate(R.layout.fragment_list_ong, container, false);
-        lv = rootlistaOng.findViewById(R.id.listaong);
+        lv = rootlistaOng.findViewById(R.id.onglistado);
         adapter = new adapterlistaONG(getContext(), getActivity(), devuelto);
         lv.setAdapter(adapter);
         return rootlistaOng;

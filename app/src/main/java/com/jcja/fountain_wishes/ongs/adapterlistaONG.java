@@ -22,7 +22,6 @@ public class adapterlistaONG extends BaseAdapter {
     Activity activity;
     private ArrayList<ModeloONG> items;
     ImageView imagen;
-    ImageLoader imageLoader;
     public adapterlistaONG(Context context, Activity activity, ArrayList<ModeloONG> items){
         this.context = context;
         this.activity = activity;
@@ -69,7 +68,7 @@ public class adapterlistaONG extends BaseAdapter {
         Picasso.with(context).load(lista3d.getImg()).into(imagen);
         id.setText(lista3d.getId());
         titulo.setText(lista3d.getTitulo());
-        descripcion.setText(lista3d.getDescripcion());
+        //descripcion.setText(lista3d.getDescripcion());
 
         return view;
     }

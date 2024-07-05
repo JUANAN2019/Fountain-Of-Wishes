@@ -2,4 +2,6 @@
 <resources>
     <string name="app_name">Fountain of Wishes</string>
     <string name="inicar">Seleccionar</string>
+    <string name="bienvenida">Sabias que: lanzar una moneda a un pozo o una fuente tra suerte...</string>
+    <string name="empezar">Quiero lanzar mi moneda</string>
 </resources>

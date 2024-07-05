@@ -13,7 +13,7 @@
             android:orientation="vertical">
 
                 <LinearLayout
-                    android:id="@+id/listaong"
+                    android:id="@+id/lista3d"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginStart="8dp"
@@ -28,8 +28,8 @@
                     android:id="@+id/select"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
-                    android:layout_below="@id/listaong"
-                    android:layout_alignStart="@id/listaong"
+                    android:layout_below="@id/lista3d"
+                    android:layout_alignStart="@id/lista3d"
                     android:layout_alignParentEnd="true"
                     android:layout_marginTop="-70dp"
                     android:text="@string/inicar" />

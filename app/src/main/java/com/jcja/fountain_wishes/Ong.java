@@ -26,8 +26,8 @@ public class Ong extends AppCompatActivity {
         FragmentTransaction ft = manager.beginTransaction();
         cargarlistaONG listadoOng = new cargarlistaONG();
         listadoOng.setArguments(args);
-        ft.replace(R.id.listaong, listadoOng).commit();
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+        ft.replace(R.id.fragmentong, listadoOng).commit();
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.mainong), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;

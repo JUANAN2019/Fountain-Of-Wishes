@@ -22,7 +22,6 @@ public class adapterlista3D extends BaseAdapter {
     Activity activity;
     private ArrayList<Modelo3d> items;
     ImageView imagen;
-    ImageLoader imageLoader;
     public adapterlista3D(Context context, Activity activity, ArrayList<Modelo3d> items){
         this.context = context;
         this.activity = activity;

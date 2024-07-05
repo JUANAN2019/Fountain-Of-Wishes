@@ -1,7 +1,10 @@
 package com.jcja.fountain_wishes;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 
@@ -32,12 +35,30 @@ public class MainActivity extends AppCompatActivity  {
         FragmentTransaction ft = manager.beginTransaction();
         cargarlista3d listado3d = new cargarlista3d();
         listado3d.setArguments(args);
-        ft.replace(R.id.listaong, listado3d).commit();
+        ft.replace(R.id.lista3d, listado3d).commit();
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        // muestra venta emergente de bienvenida
+        AlertDialog.Builder alertDialogB = new AlertDialog.Builder(this);
+        LayoutInflater inflaterB = getLayoutInflater();
+        View dialogViewB = inflaterB.inflate(R.layout.bienvenida, null);
+        //final TextView texto = dialogView3.findViewById(R.id.textobien);
+        //texto.setText();
+        alertDialogB.setView(dialogViewB);
+
+        alertDialogB.setPositiveButton(R.string.empezar,
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+        alertDialogB.create();
+        alertDialogB.show();
+
         select.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
