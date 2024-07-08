@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -36,19 +37,19 @@ public class MainActivity extends AppCompatActivity  {
         cargarlista3d listado3d = new cargarlista3d();
         listado3d.setArguments(args);
         ft.replace(R.id.lista3d, listado3d).commit();
+
+        
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
         // muestra venta emergente de bienvenida
         AlertDialog.Builder alertDialogB = new AlertDialog.Builder(this);
         LayoutInflater inflaterB = getLayoutInflater();
         View dialogViewB = inflaterB.inflate(R.layout.bienvenida, null);
-        //final TextView texto = dialogView3.findViewById(R.id.textobien);
-        //texto.setText();
         alertDialogB.setView(dialogViewB);
-
         alertDialogB.setPositiveButton(R.string.empezar,
                 new DialogInterface.OnClickListener() {
                     @Override
@@ -59,15 +60,20 @@ public class MainActivity extends AppCompatActivity  {
         alertDialogB.create();
         alertDialogB.show();
 
+
+        // acción boton siguiente layout
         select.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //startActivity(new Intent(MainActivity.this, Ong.class));
+
                 Intent ong = new Intent(MainActivity.this, Ong.class);
                 startActivity(ong);
                 finish();
-
             }
         });
+    }
+    public void onFinishEditDialog(int seleccion) {
+        System.out.println("Has seleccionado: "+ seleccion);
+        Toast.makeText(getApplicationContext(), "Has seleccionado el: " + seleccion, Toast.LENGTH_LONG).show();
     }
 }

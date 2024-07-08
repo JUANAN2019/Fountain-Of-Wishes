@@ -11,7 +11,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.android.volley.toolbox.ImageLoader;
+import com.jcja.fountain_wishes.MainActivity;
 import com.jcja.fountain_wishes.R;
 import com.squareup.picasso.Picasso;
 
@@ -69,8 +69,17 @@ public class adapterlista3D extends BaseAdapter {
         id.setText(lista3d.getId());
         titulo.setText(lista3d.getTitulo());
         descripcion.setText(lista3d.getDescripcion());
-
+        View finalView = view;
+        view.setOnLongClickListener(new View.OnLongClickListener(){
+            public boolean onLongClick(View v) {
+                seleccionar(finalView, Integer.parseInt(lista3d.getId()));
+                return true;
+            }
+        });
         return view;
     }
-
+    public void seleccionar(View view, int select) {
+        MainActivity mainActivity = (MainActivity) view.getContext();
+        mainActivity.onFinishEditDialog(select);
+    }
 }

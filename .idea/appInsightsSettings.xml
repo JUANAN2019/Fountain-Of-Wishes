@@ -8,10 +8,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="PLACEHOLDER" />
-                  <option name="mobileSdkAppId" value="" />
-                  <option name="projectId" value="" />
-                  <option name="projectNumber" value="" />
+                  <option name="appId" value="com.jcja.fountain_wishes" />
+                  <option name="mobileSdkAppId" value="1:617187844646:android:c35069fdba9d1fd5a6bce7" />
+                  <option name="projectId" value="fountain-of-wishes" />
+                  <option name="projectNumber" value="617187844646" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />

@@ -67,7 +67,7 @@ public class adapterlistaONG extends BaseAdapter {
 
         Picasso.with(context).load(lista3d.getImg()).into(imagen);
         id.setText(lista3d.getId());
-        titulo.setText(lista3d.getTitulo());
+        //titulo.setText(lista3d.getTitulo());
         //descripcion.setText(lista3d.getDescripcion());
 
         return view;
