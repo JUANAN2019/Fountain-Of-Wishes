@@ -22,6 +22,7 @@ import com.jcja.fountain_wishes.modelo_3d.cargarlista3d;
 public class MainActivity extends AppCompatActivity  {
     private Bundle args = new Bundle();
     private Button select;
+    private Integer enviarSeleccion;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,7 +39,7 @@ public class MainActivity extends AppCompatActivity  {
         listado3d.setArguments(args);
         ft.replace(R.id.lista3d, listado3d).commit();
 
-        
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -50,6 +51,7 @@ public class MainActivity extends AppCompatActivity  {
         LayoutInflater inflaterB = getLayoutInflater();
         View dialogViewB = inflaterB.inflate(R.layout.bienvenida, null);
         alertDialogB.setView(dialogViewB);
+        alertDialogB.setCancelable(false);
         alertDialogB.setPositiveButton(R.string.empezar,
                 new DialogInterface.OnClickListener() {
                     @Override
@@ -67,6 +69,7 @@ public class MainActivity extends AppCompatActivity  {
             public void onClick(View v) {
 
                 Intent ong = new Intent(MainActivity.this, Ong.class);
+                ong.putExtra("seleccion", enviarSeleccion);
                 startActivity(ong);
                 finish();
             }
@@ -74,6 +77,8 @@ public class MainActivity extends AppCompatActivity  {
     }
     public void onFinishEditDialog(int seleccion) {
         System.out.println("Has seleccionado: "+ seleccion);
-        Toast.makeText(getApplicationContext(), "Has seleccionado el: " + seleccion, Toast.LENGTH_LONG).show();
+        enviarSeleccion = seleccion;
+        //Toast.makeText(getApplicationContext(), "Has seleccionado el: " + seleccion, Toast.LENGTH_LONG).show();
+        select.setEnabled(seleccion != -1);
     }
 }
