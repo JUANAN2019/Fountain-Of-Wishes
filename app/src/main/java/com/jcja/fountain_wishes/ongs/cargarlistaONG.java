@@ -92,8 +92,8 @@ public class cargarlistaONG extends Fragment {
                                     jobj.getString("id"),
                                     jobj.getString("titulo"),
                                     jobj.getString("descripcion"),
-                                    jobj.getString("valoracion"),
-                                    jobj.getString("imagen")
+                                    jobj.getString("imagen"),
+                                    jobj.getString("valoracion")
                             );
                             lista3D.add(modelo3d);
                             System.out.println("<<<<----->>>>> Objeto "+lista3D);
