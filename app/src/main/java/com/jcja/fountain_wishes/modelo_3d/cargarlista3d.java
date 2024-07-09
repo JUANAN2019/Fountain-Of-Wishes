@@ -31,7 +31,7 @@ public class cargarlista3d extends Fragment {
     Integer numero;
     String texto;
     ListView lv;
-    adapterlista3D adapter;
+    Adapterlista3D adapter;
     ArrayList<Modelo3d> lista3D = new ArrayList<>();
     ArrayList<Modelo3d> devuelto = new ArrayList<>();
     public cargarlista3d() {
@@ -54,7 +54,7 @@ public class cargarlista3d extends Fragment {
                              Bundle savedInstanceState) {
         View rootlista3d = inflater.inflate(R.layout.fragment_list, container, false);
         lv = rootlista3d.findViewById(R.id.listafuentes);
-        adapter = new adapterlista3D(getContext(), getActivity(), devuelto);
+        adapter = new Adapterlista3D(getContext(), getActivity(), devuelto);
         lv.setAdapter(adapter);
         return rootlista3d;
     }
