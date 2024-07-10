@@ -52,25 +52,15 @@ public class MainActivity extends AppCompatActivity  {
         View dialogViewB = inflaterB.inflate(R.layout.bienvenida, null);
         alertDialogB.setView(dialogViewB);
         alertDialogB.setCancelable(false);
-        alertDialogB.setPositiveButton(R.string.empezar,
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                });
-        alertDialogB.create();
-        alertDialogB.show();
-
+        alertDialogB.setPositiveButton(R.string.empezar, (DialogInterface dialog, int which)->dialog.dismiss());
+        alertDialogB.create().show();
 
         // acción boton siguiente layout
-        select.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent ong = new Intent(MainActivity.this, Ong.class);
-                ong.putExtra("seleccion", enviarSeleccion);
-                startActivity(ong);
+        select.setOnClickListener(v -> {
+            if (enviarSeleccion != -1) { // Check if an item is selected
+                Intent intent = new Intent(MainActivity.this, Ong.class);
+                intent.putExtra("seleccion", enviarSeleccion);
+                startActivity(intent);
                 finish();
             }
         });

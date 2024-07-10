@@ -43,11 +43,14 @@ public class cargarlista3d extends Fragment {
 
         numero = bundle.getInt("numero");
         texto = bundle.getString("nombre");
+        new connections().execute();
+        /*
         try {
-            devuelto = new connections().execute().get();
+            //devuelto = new connections().execute().get();
         } catch (ExecutionException | InterruptedException e) {
             throw new RuntimeException(e);
         }
+        */
     }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -58,7 +61,11 @@ public class cargarlista3d extends Fragment {
         lv.setAdapter(adapter);
         return rootlista3d;
     }
-
+    private void updateModelList(ArrayList<Modelo3d> models) {
+        devuelto.clear();
+        devuelto.addAll(models);
+        adapter.notifyDataSetChanged();
+    }
     private class connections extends AsyncTask<Void, Void, ArrayList<Modelo3d>> {
         @Override
         protected void onPreExecute() {
@@ -81,32 +88,35 @@ public class cargarlista3d extends Fragment {
                     sb.append(linea);
                 }
                 jsonArray = new JSONArray(sb.toString());
-                try {
-                    JSONObject jobj;
-                    if(jsonArray != null){
-                        for (int i = 0; i < jsonArray.length(); i++) {
-                            jobj = jsonArray.getJSONObject(i);
-                            System.out.println("objeto: "+jobj.getInt("id"));
+                JSONObject jobj;
+                if(jsonArray != null){
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        jobj = jsonArray.getJSONObject(i);
+                        System.out.println("objeto: "+jobj.getInt("id"));
 
-                            Modelo3d modelo3d = new Modelo3d(
-                                    jobj.getString("id"),
-                                    jobj.getString("titulo"),
-                                    jobj.getString("descripcion"),
-                                    jobj.getString("modelo"),
-                                    jobj.getString("imagen")
-                            );
-                            lista3D.add(modelo3d);
-                            System.out.println("<<<<----->>>>> Objeto "+lista3D);
-                        }
+                        Modelo3d modelo3d = new Modelo3d(
+                                jobj.getString("id"),
+                                jobj.getString("titulo"),
+                                jobj.getString("descripcion"),
+                                jobj.getString("modelo"),
+                                jobj.getString("imagen")
+                        );
+                        lista3D.add(modelo3d);
+                        System.out.println("<<<<----->>>>> Objeto "+lista3D);
                     }
-                } catch (JSONException e) {
-                    System.out.println("Error ");
-                    e.printStackTrace();
                 }
             } catch (IOException | JSONException e) {
                 e.printStackTrace();
+            } finally {
+                if(con != null){
+                    con.disconnect();
+                }
             }
             return lista3D;
+        }
+        @Override
+        protected void onPostExecute(ArrayList<Modelo3d> models) {
+            updateModelList(models);
         }
     }
 }
