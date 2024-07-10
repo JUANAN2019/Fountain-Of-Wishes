@@ -60,15 +60,16 @@ public class adapterlistaONG extends BaseAdapter {
         view = inflter.inflate(R.layout.fragment_item_ong, viewGroup, false);
         TextView id = view.findViewById(R.id.item_number);
         TextView titulo = view.findViewById(R.id.titulo);
+        TextView valoracion = view.findViewById(R.id.valoracion);
         TextView descripcion = view.findViewById(R.id.descripcion);
         imagen = view.findViewById(R.id.imageView);
         System.out.println("Dirección url imagen: "+lista3d.getImg());
 
-
-        Picasso.with(context).load(lista3d.getImg()).into(imagen);
+        titulo.setText(lista3d.getTitulo());
         id.setText(lista3d.getId());
-        //titulo.setText(lista3d.getTitulo());
-        //descripcion.setText(lista3d.getDescripcion());
+        Picasso.with(context).load(lista3d.getImg()).into(imagen);
+        valoracion.setText("Valoracion: "+lista3d.getValoracion());
+        descripcion.setText(lista3d.getDescripcion());
 
         return view;
     }
