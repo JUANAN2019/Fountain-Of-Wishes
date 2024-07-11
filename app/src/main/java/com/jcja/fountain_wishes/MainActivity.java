@@ -19,6 +19,10 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.jcja.fountain_wishes.modelo_3d.cargarlista3d;
 
+import java.util.Arrays;
+import java.util.List;
+import com.jcja.fountain_wishes.app.LanguageManager;
+
 public class MainActivity extends AppCompatActivity  {
     private Bundle args = new Bundle();
     private Button select;
@@ -50,6 +54,19 @@ public class MainActivity extends AppCompatActivity  {
         AlertDialog.Builder alertDialogB = new AlertDialog.Builder(this);
         LayoutInflater inflaterB = getLayoutInflater();
         View dialogViewB = inflaterB.inflate(R.layout.bienvenida, null);
+
+        // *** TRADUCCIÓN DE TEXTOS ***
+//        int textViewIds = Arrays.asList(
+//                R.id.textobien, // Reemplaza con los IDs de tus TextViews en bienvenida.xml
+//               // R.id.select,
+//                R.id.titulo,
+//                R.id.valoracion,
+//                R.id.descripcion,
+//                R.id.imageView
+//
+//                // ... más IDs de TextViews
+//        );
+        LanguageManager.translateTextOnScreen(this, R.id.select, "es"); // Traduce al español
         alertDialogB.setView(dialogViewB);
         alertDialogB.setCancelable(false);
         alertDialogB.setPositiveButton(R.string.empezar,
