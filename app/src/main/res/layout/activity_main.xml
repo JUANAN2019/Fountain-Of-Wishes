@@ -34,15 +34,18 @@
 
                 <Button
                     android:id="@+id/select"
+
+
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
                     android:layout_below="@id/lista3d"
                     android:layout_alignStart="@id/lista3d"
+                    android:layout_alignEnd="@id/lista3d"
                     android:layout_alignParentEnd="true"
                     android:layout_marginTop="-70dp"
-                    android:enabled="false"
+                    android:background="@drawable/button_style"
                     android:text="@string/inicar"
-                    app:rippleColor="@color/purple_dark" />
+                    app:shapeAppearance="@style/botones" />
 
         </RelativeLayout>
 

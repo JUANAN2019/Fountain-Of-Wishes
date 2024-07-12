@@ -76,10 +76,7 @@ public class Adapterlista3D extends BaseAdapter {
         if(estado!=-1 && estado == Integer.parseInt(lista.getId())){
             view.setBackground(context.getResources().getDrawable(R.drawable.selecionado));
         }
-        //TextView id = view.findViewById(R.id.item_number);
-        //TextView titulo = view.findViewById(R.id.titulo);
-        //TextView descripcion = view.findViewById(R.id.descripcion);
-        //imagen = view.findViewById(R.id.imageView);
+
         System.out.println("Dirección url imagen: "+lista.getImg());
 
 
@@ -93,7 +90,7 @@ public class Adapterlista3D extends BaseAdapter {
 
         holder.titulo.setText(tituloText);
         holder.descripcion.setText(descripcionText);
-
+        holder.imagen.setContentDescription(tituloText);
 
         view.setOnLongClickListener(new View.OnLongClickListener(){
             @SuppressLint("UseCompatLoadingForDrawables")

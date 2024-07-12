@@ -35,7 +35,6 @@ public class MainActivity extends AppCompatActivity {
     private MainSesion inicilite;
     HashMap<String, String> user = null;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
         }else{
             inicializar();
         }
+
         imagenmenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -79,15 +79,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-
-
-
 
         // acción boton siguiente layout
         select.setOnClickListener(new View.OnClickListener() {
@@ -99,7 +95,6 @@ public class MainActivity extends AppCompatActivity {
                 finish();
             }
         });
-
     }
     public void inicializar(){
         HashMap<String, String> user = inicilite.getInitDetails();
@@ -116,9 +111,6 @@ public class MainActivity extends AppCompatActivity {
             Notnet notnet = new Notnet();
             ft.replace(R.id.cargarnet, notnet).commit();
         }
-
-
-
     }
 
 

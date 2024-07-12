@@ -82,7 +82,7 @@ public class AdapterlistaONG extends BaseAdapter {
 
         holder.titulo.setText(tituloText);
         holder.descripcion.setText(descripcionText);
-
+        holder.imagen.setContentDescription(tituloText);
         Picasso.with(context).load(lista.getImg()).into(holder.imagen);
         holder.valoracion.setText(context.getString(R.string.valoracion, Integer.parseInt(lista.getValoracion())));
 

@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -32,7 +33,6 @@ public class Ong extends AppCompatActivity {
         setContentView(R.layout.ong);
         next = findViewById(R.id.selectdos);
         ImageView imagenback = findViewById(R.id.imagenback);
-
         ImageView imagenmenu = findViewById(R.id.imagenmenu);
         inicilite = new MainSesion(getApplicationContext());
         HashMap<String, String> user = inicilite.getInitDetails();
@@ -47,6 +47,7 @@ public class Ong extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
         imagenback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -55,6 +56,17 @@ public class Ong extends AppCompatActivity {
                 finish();
             }
         });
+
+        imagenmenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                DialogFragment newFragment = new ShowAlert();
+                FragmentTransaction transaction = fragmentManager.beginTransaction();
+                transaction.add(android.R.id.content, newFragment, "Tipo genero").commit();
+            }
+        });
+
         // acción boton siguiente layout
         next.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,6 +79,7 @@ public class Ong extends AppCompatActivity {
             }
         });
     }
+
     public void onFinishEditDialog(int seleccion) {
         System.out.println("Has seleccionado: "+ seleccion);
         enviarSeleccion = seleccion;
