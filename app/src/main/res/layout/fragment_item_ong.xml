@@ -8,21 +8,15 @@
     android:orientation="vertical">
 
 
-
     <TextView
-        android:id="@+id/titulo"
-        android:layout_width="wrap_content"
+        android:id="@+id/tituloong"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/text_margin"
         android:textAppearance="?attr/textAppearanceListItem"
         android:textSize="20sp"
         android:textStyle="bold" />
-    <TextView
-        android:id="@+id/item_number"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/text_margin"
-        android:textAppearance="?attr/textAppearanceListItem" />
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="200dp"
@@ -30,15 +24,16 @@
         android:layout_gravity="center"
         android:layout_weight="1"
         tools:srcCompat="@tools:sample/avatars" />
+
     <TextView
         android:id="@+id/valoracion"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/text_margin"
         android:textAppearance="?attr/textAppearanceListItem" />
 
     <TextView
-        android:id="@+id/descripcion"
+        android:id="@+id/descripcionong"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/text_margin"

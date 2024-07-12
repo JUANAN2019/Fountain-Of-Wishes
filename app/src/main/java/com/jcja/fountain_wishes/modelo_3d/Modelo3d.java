@@ -1,5 +1,6 @@
 package com.jcja.fountain_wishes.modelo_3d;
 
+
 import com.jcja.fountain_wishes.app.AppConfig;
 
 public class Modelo3d {
@@ -25,7 +26,7 @@ public class Modelo3d {
         return modelo;
     }
     public String getImg() {
-        return AppConfig.base+"modelo/"+img;
+        return AppConfig.BASE+"modelo/"+img;
     }
     public void setId(String id) {
         this.id = id;

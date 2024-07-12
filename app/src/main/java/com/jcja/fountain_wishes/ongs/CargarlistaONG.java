@@ -9,6 +9,7 @@ import android.widget.ListView;
 
 import androidx.fragment.app.Fragment;
 
+
 import com.jcja.fountain_wishes.R;
 import com.jcja.fountain_wishes.app.AppConfig;
 
@@ -23,42 +24,34 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.concurrent.ExecutionException;
 
-public class cargarlistaONG extends Fragment {
-
-
-    Integer numero;
-    String texto;
+public class CargarlistaONG extends Fragment {
     ListView lv;
-    adapterlistaONG adapter;
-    ArrayList<ModeloONG> lista3D = new ArrayList<>();
+    AdapterlistaONG adapter;
+    ArrayList<ModeloONG> listaONG = new ArrayList<>();
     ArrayList<ModeloONG> devuelto = new ArrayList<>();
-    public cargarlistaONG() {
+    public CargarlistaONG() {
     }
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Bundle bundle = getArguments();
-
-        numero = bundle.getInt("numero");
-        texto = bundle.getString("nombre");
-        try {
-            devuelto = new connections().execute().get();
-        } catch (ExecutionException | InterruptedException e) {
-            throw new RuntimeException(e);
-        }
     }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootlistaOng = inflater.inflate(R.layout.fragment_list_ong, container, false);
         lv = rootlistaOng.findViewById(R.id.onglistado);
-        adapter = new adapterlistaONG(getContext(), getActivity(), devuelto);
+        adapter = new AdapterlistaONG(getContext(), getActivity(), devuelto);
+        new connections().execute();
         lv.setAdapter(adapter);
+
         return rootlistaOng;
     }
-
+    private void updateModelList(ArrayList<ModeloONG> models) {
+        devuelto.clear();
+        devuelto.addAll(models);
+        adapter.notifyDataSetChanged();
+    }
     private class connections extends AsyncTask<Void, Void, ArrayList<ModeloONG>> {
         @Override
         protected void onPreExecute() {
@@ -66,7 +59,7 @@ public class cargarlistaONG extends Fragment {
         }
         @Override
         protected ArrayList<ModeloONG> doInBackground(Void... params) {
-            String url = AppConfig.base+AppConfig.JSONONGS;
+            String url = AppConfig.BASE+AppConfig.JSONONGS;
             HttpURLConnection con = null;
             try {
                 JSONArray jsonArray = null;
@@ -81,32 +74,34 @@ public class cargarlistaONG extends Fragment {
                     sb.append(linea);
                 }
                 jsonArray = new JSONArray(sb.toString());
-                try {
-                    JSONObject jobj;
-                    if(jsonArray != null){
-                        for (int i = 0; i < jsonArray.length(); i++) {
-                            jobj = jsonArray.getJSONObject(i);
-                            System.out.println("objeto: "+jobj.getInt("id"));
 
-                            ModeloONG modelo3d = new ModeloONG(
-                                    jobj.getString("id"),
-                                    jobj.getString("titulo"),
-                                    jobj.getString("descripcion"),
-                                    jobj.getString("imagen"),
-                                    jobj.getString("valoracion")
-                            );
-                            lista3D.add(modelo3d);
-                            System.out.println("<<<<----->>>>> Objeto "+lista3D);
-                        }
-                    }
-                } catch (JSONException e) {
-                    System.out.println("Error ");
-                    e.printStackTrace();
+                JSONObject jobj;
+                for (int i = 0; i < jsonArray.length(); i++) {
+                    jobj = jsonArray.getJSONObject(i);
+                    System.out.println("objeto: " + jobj.getInt("id"));
+
+                    ModeloONG modelo3d = new ModeloONG(
+                            jobj.getString("id"),
+                            jobj.getString("titulo"),
+                            jobj.getString("descripcion"),
+                            jobj.getString("valoracion"),
+                            jobj.getString("imagen")
+                    );
+                    listaONG.add(modelo3d);
+                    System.out.println("<<<<----->>>>> Objeto " + listaONG);
                 }
+
             } catch (IOException | JSONException e) {
                 e.printStackTrace();
+            }finally {
+                if(con != null){
+                    con.disconnect();
+                }
             }
-            return lista3D;
+            return listaONG;
+        }
+        protected void onPostExecute(ArrayList<ModeloONG> models) {
+            updateModelList(models);
         }
     }
 }

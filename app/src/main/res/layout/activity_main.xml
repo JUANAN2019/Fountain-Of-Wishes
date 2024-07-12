@@ -8,17 +8,25 @@
     tools:context=".MainActivity">
 
         <RelativeLayout
+            android:id="@+id/cargarnet"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
+
+                <include
+                    android:id="@+id/superior"
+                    layout="@layout/menu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
 
                 <LinearLayout
                     android:id="@+id/lista3d"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_below="@id/superior"
                     android:layout_marginStart="8dp"
-                    android:layout_marginTop="24dp"
                     android:layout_marginEnd="8dp"
+                    android:layout_marginTop="24dp"
                     android:layout_marginBottom="90dp"
                     android:orientation="vertical">
 
@@ -33,7 +41,8 @@
                     android:layout_alignParentEnd="true"
                     android:layout_marginTop="-70dp"
                     android:enabled="false"
-                    android:text="@string/inicar" />
+                    android:text="@string/inicar"
+                    app:rippleColor="@color/purple_dark" />
 
         </RelativeLayout>
 

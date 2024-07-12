@@ -4,4 +4,7 @@
     <string name="inicar">Choose</string>
     <string name="bienvenida">Did you know that: \nthrowing a coin into a well or fountain brings good luck... \nTo select where you want to throw your coin, press and hold it.</string>
     <string name="empezar">I want to flip my coin</string>
+    <string name="valoracion">Valoración %1$s\\5</string>
+    <string name="selectedong">Elegir ONG</string>
+    <string name="team">Team\n</string>
 </resources>

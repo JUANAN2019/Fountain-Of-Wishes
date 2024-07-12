@@ -4,4 +4,7 @@
     <string name="inicar">Elegir</string>
     <string name="bienvenida">Sabias que: \nlanzar una moneda a un pozo o una fuente trae buena suerte... \nPara seleccionar donde quieres lanzar tu moneda, mantenlo pulsado.</string>
     <string name="empezar">Quiero lanzar mi moneda</string>
+    <string name="valoracion">Valoración %1$s\\5</string>
+    <string name="selectedong">Elegir ONG</string>
+    <string name="team">Team\n</string>
 </resources>

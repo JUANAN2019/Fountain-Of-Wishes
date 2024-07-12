@@ -9,8 +9,10 @@ import android.widget.ListView;
 
 import androidx.fragment.app.Fragment;
 
+
 import com.jcja.fountain_wishes.R;
 import com.jcja.fountain_wishes.app.AppConfig;
+import com.jcja.fountain_wishes.app.NetStatus;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -23,40 +25,27 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.concurrent.ExecutionException;
 
-public class cargarlista3d extends Fragment {
-
-
-    Integer numero;
-    String texto;
+public class Cargarlista3d extends Fragment {
     ListView lv;
     Adapterlista3D adapter;
     ArrayList<Modelo3d> lista3D = new ArrayList<>();
     ArrayList<Modelo3d> devuelto = new ArrayList<>();
-    public cargarlista3d() {
+    public Cargarlista3d() {
     }
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Bundle bundle = getArguments();
-
-        numero = bundle.getInt("numero");
-        texto = bundle.getString("nombre");
-        new connections().execute();
-        /*
-        try {
-            //devuelto = new connections().execute().get();
-        } catch (ExecutionException | InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-        */
     }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootlista3d = inflater.inflate(R.layout.fragment_list, container, false);
         lv = rootlista3d.findViewById(R.id.listafuentes);
+        // Comprobar si hay internet
+        if (NetStatus.isNetworkAvailable(requireContext())){
+            new connections().execute();
+        }
         adapter = new Adapterlista3D(getContext(), getActivity(), devuelto);
         lv.setAdapter(adapter);
         return rootlista3d;
@@ -73,7 +62,7 @@ public class cargarlista3d extends Fragment {
         }
         @Override
         protected ArrayList<Modelo3d> doInBackground(Void... params) {
-            String url = AppConfig.base+AppConfig.JSON3D;
+            String url = AppConfig.BASE+AppConfig.JSON3D;
             HttpURLConnection con = null;
             try {
                 JSONArray jsonArray = null;

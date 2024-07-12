@@ -11,28 +11,35 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+        <include
+            android:id="@+id/superior"
+            layout="@layout/menu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
         <LinearLayout
             android:id="@+id/fragmentong"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_below="@id/superior"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="24dp"
             android:layout_marginEnd="8dp"
+            android:layout_marginTop="24dp"
             android:layout_marginBottom="90dp"
             android:orientation="vertical">
 
         </LinearLayout>
 
         <Button
-            android:id="@+id/buttondos"
+            android:id="@+id/selectdos"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_below="@id/fragmentong"
             android:layout_alignStart="@id/fragmentong"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="-70dp"
-            android:text="@string/inicar" />
+            android:enabled="false"
+            android:text="@string/selectedong" />
 
     </RelativeLayout>
 

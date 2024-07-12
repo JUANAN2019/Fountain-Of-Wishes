@@ -4,4 +4,7 @@
     <string name="inicar">Choisir</string>
     <string name="bienvenida">Saviez-vous que: \n jeter une pièce dans un puits ou une fontaine porte chance... \nPour sélectionner l\'endroit où vous souhaitez lancer votre pièce, appuyez longuement dessus.</string>
     <string name="empezar">Je veux lancer ma pièce</string>
+    <string name="valoracion">Valoración %1$s\\5</string>
+    <string name="selectedong">Elegir ONG</string>
+    <string name="team">Team\n</string>
 </resources>
