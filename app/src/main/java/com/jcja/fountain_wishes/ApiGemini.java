@@ -34,7 +34,7 @@ public class ApiGemini extends AppCompatActivity {
         // For text-only input, use the gemini-pro model
         GenerativeModel gm = new GenerativeModel(/* modelName */ "gemini-pro",
 // Access your API key as a Build Configuration variable (see "Set up your API key" above)
-                /* apiKey */ "AIzaSyDsa8h9ACwbTR6j1GCIivz0FGfGn-NC8V8");
+                /* apiKey */ "+++++++++++++++++++++");
         GenerativeModelFutures model = GenerativeModelFutures.from(gm);
         Content content = new Content.Builder()
                 .addText("traduce este texto que te voy a pasar a español. texto: " + textView.getText().toString())
