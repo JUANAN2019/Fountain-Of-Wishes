@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,7 +23,7 @@ import com.jcja.fountain_wishes.ongs.CargarlistaONG;
 import java.util.HashMap;
 
 public class Ong extends AppCompatActivity {
-
+    private boolean doubleBackToExitPressedOnce = false;
     private Button next;
     private Integer enviarSeleccion;
     private MainSesion inicilite;
@@ -85,5 +86,20 @@ public class Ong extends AppCompatActivity {
         enviarSeleccion = seleccion;
         //Toast.makeText(getApplicationContext(), "Has seleccionado el: " + seleccion, Toast.LENGTH_LONG).show();
         next.setEnabled(seleccion != -1);
+    }
+    @Override
+    public void onBackPressed() {
+        if (doubleBackToExitPressedOnce) {
+            super.onBackPressed(); // salida de la app
+            return;
+        }
+        this.doubleBackToExitPressedOnce = true;
+        Toast.makeText(this, R.string.exit, Toast.LENGTH_SHORT).show();
+        // Restaurar 2000 milisegundos para restaurar y pedir 2 nuevos back
+        new android.os.Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                doubleBackToExitPressedOnce = false;
+            }}, 2000); // 2 segundo y cambia
     }
 }

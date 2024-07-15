@@ -11,7 +11,10 @@
             android:id="@+id/cargarnet"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
                 <include
                     android:id="@+id/superior"
@@ -25,8 +28,8 @@
                     android:layout_height="match_parent"
                     android:layout_below="@id/superior"
                     android:layout_marginStart="8dp"
-                    android:layout_marginEnd="8dp"
                     android:layout_marginTop="24dp"
+                    android:layout_marginEnd="8dp"
                     android:layout_marginBottom="90dp"
                     android:orientation="vertical">
 
@@ -34,7 +37,7 @@
 
                 <Button
                     android:id="@+id/select"
-
+                    android:theme="@style/Buttonspui"
 
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
@@ -43,9 +46,8 @@
                     android:layout_alignEnd="@id/lista3d"
                     android:layout_alignParentEnd="true"
                     android:layout_marginTop="-70dp"
-                    android:background="@drawable/button_style"
-                    android:text="@string/inicar"
-                    app:shapeAppearance="@style/botones" />
+
+                    android:text="@string/inicar" />
 
         </RelativeLayout>
 

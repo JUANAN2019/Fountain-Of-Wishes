@@ -59,6 +59,7 @@
 
         <Button
             android:id="@+id/selectdos"
+            android:theme="@style/Buttonspui"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_below="@id/fragmentong"

@@ -11,6 +11,12 @@
     </style>
     <style name="botones">
         <item name="cornerSize">50%</item>
-
     </style>
+    <style name="Buttonspui" parent="Base.Widget.AppCompat.Button.Colored">
+        <item name="colorButtonNormal">@color/purple_dark</item>
+        <item name="colorPrimary">@color/purple_dark</item>
+        <item name="colorControlHighlight">@color/white</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
 </resources>

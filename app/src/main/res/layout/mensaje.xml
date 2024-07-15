@@ -19,6 +19,7 @@
 
         <Button
             android:id="@+id/buttonAcepta"
+            android:theme="@style/Buttonspui"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/ia"
@@ -29,6 +30,7 @@
 
         <Button
             android:id="@+id/valora"
+            android:theme="@style/Buttonspui"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/buttonAcepta"

@@ -6,7 +6,8 @@
     <string name="empezar">Quiero lanzar mi moneda</string>
     <string name="valoracion">Valoración %1$s\\5</string>
     <string name="selectedong">Elegir ONG</string>
-    <string name="team">Team\n</string>
+    <string name="team">Equipo</string>
     <string name="ok">Aceptar</string>
     <string name="valorar">Valora nuestra app y avanza con nostros</string>
+    <string name="exit">Presione Atrás nuevamente para salir.</string>
 </resources>

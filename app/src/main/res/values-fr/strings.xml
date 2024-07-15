@@ -6,7 +6,8 @@
     <string name="empezar">Je veux lancer ma pièce</string>
     <string name="valoracion">Valoración %1$s\\5</string>
     <string name="selectedong">Elegir ONG</string>
-    <string name="team">Team\n</string>
-    <string name="ok">Aceptar</string>
-    <string name="valorar">Valora nuestra app y avanza con nostros</string>
+    <string name="team">Équipe</string>
+    <string name="ok">Accepter</string>
+    <string name="valorar">Évaluez notre application et avancez avec nous</string>
+    <string name="exit">Press back again to exit</string>
 </resources>

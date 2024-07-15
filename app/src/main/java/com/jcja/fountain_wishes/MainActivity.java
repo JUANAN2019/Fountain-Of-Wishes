@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -29,7 +30,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
-
+    private boolean doubleBackToExitPressedOnce = false;
     private Button select;
     private Integer enviarSeleccion;
     private MainSesion inicilite;
@@ -45,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
         imagenback.setVisibility(View.GONE);
         ImageView imagenmenu = findViewById(R.id.imagenmenu);
         inicilite = new MainSesion(getApplicationContext());
+        inicilite.outInit();
         if (!inicilite.isInitIn()) {
             // muestra venta emergente de bienvenida
             AlertDialog.Builder alertDialogB = new AlertDialog.Builder(this);
@@ -124,6 +126,20 @@ public class MainActivity extends AppCompatActivity {
         //Toast.makeText(getApplicationContext(), "Has seleccionado el: " + seleccion, Toast.LENGTH_LONG).show();
         select.setEnabled(seleccion != -1);
     }
-
+    @Override
+    public void onBackPressed() {
+        if (doubleBackToExitPressedOnce) {
+            super.onBackPressed(); // salida de la app
+            return;
+        }
+        this.doubleBackToExitPressedOnce = true;
+        Toast.makeText(this, R.string.exit, Toast.LENGTH_SHORT).show();
+        // Restaurar 2000 milisegundos para restaurar y pedir 2 nuevos back
+        new android.os.Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                doubleBackToExitPressedOnce = false;
+            }}, 2000); // 2 segundo y cambia
+    }
 
 }
