@@ -17,8 +17,8 @@ playServicesFitness = "21.2.0"
 firebaseCrashlyticsBuildtools = "3.0.2"
 
 [libraries]
-firebase-analytics = { module = "com.google.firebase:firebase-analytics" }
-firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebaseBom" }
+firebase-analytics = { module = "com.google.firebase:firebase-analytics", version = "22.0.2" }
+firebase-bom = { module = "com.google.firebase:firebase-bom", version = "33.1.2" }
 google-services = { module = "com.google.gms:google-services", version.ref = "googleServices" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }

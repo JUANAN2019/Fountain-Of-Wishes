@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+    <RelativeLayout
+        android:id="@+id/cargarnet"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/superior"
+            layout="@layout/menu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:id="@+id/lista3d"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/superior"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="90dp"
+            android:orientation="vertical">
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/select"
+            android:theme="@style/Buttonspui"
+
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_below="@id/lista3d"
+            android:layout_alignStart="@id/lista3d"
+            android:layout_alignEnd="@id/lista3d"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="-70dp"
+
+            android:text="@string/inicar" />
+
+    </RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

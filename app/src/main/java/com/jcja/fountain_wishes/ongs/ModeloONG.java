@@ -1,11 +1,12 @@
 package com.jcja.fountain_wishes.ongs;
 
+
 import com.jcja.fountain_wishes.app.AppConfig;
 
 public class ModeloONG {
     private String id, titulo, descripcion, img, valoracion;
 
-    public ModeloONG(String id, String titulo, String descripcion, String img, String valoracion){
+    public ModeloONG(String id, String titulo, String descripcion, String valoracion, String img){
         this.id = id;
         this.titulo = titulo;
         this.descripcion = descripcion;
@@ -15,9 +16,6 @@ public class ModeloONG {
     public String getValoracion() {
         return valoracion;
     }
-    public void setValoracion(String valoracion) {
-        this.valoracion = valoracion;
-        }
     public String getId() {
         return id;
     }
@@ -29,7 +27,7 @@ public class ModeloONG {
     }
 
     public String getImg() {
-        return AppConfig.base+"modelo/"+img;
+        return AppConfig.BASE+"modelo/"+img;
     }
     public void setId(String id) {
         this.id = id;
@@ -40,7 +38,9 @@ public class ModeloONG {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
-
+    public void setValoracion(String valoracion) {
+        this.valoracion = valoracion;
+    }
     public void setImg(String img) {
         this.img = img;
     }

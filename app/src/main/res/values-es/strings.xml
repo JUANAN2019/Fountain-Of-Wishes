@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Fountain of Wishes</string>
-    <string name="inicar">Seleccionar</string>
-    <string name="bienvenida">Sabias que: lanzar una moneda a un pozo o una fuente tra suerte...</string>
+    <string name="inicar">Elegir</string>
+    <string name="bienvenida">Sabias que: \nlanzar una moneda a un pozo o una fuente trae buena suerte... \nPara seleccionar donde quieres lanzar tu moneda, mantenlo pulsado.</string>
     <string name="empezar">Quiero lanzar mi moneda</string>
+    <string name="valoracion">Valoración %1$s\\5</string>
+    <string name="selectedong">Elegir ONG</string>
+    <string name="team">Equipo</string>
+    <string name="ok">Aceptar</string>
+    <string name="valorar">Valora nuestra app y avanza con nostros</string>
+    <string name="exit">Presione Atrás nuevamente para salir.</string>
 </resources>
