@@ -1,7 +1,11 @@
 package com.jcja.fountain_wishes.app;
 
 import android.app.Activity;
+import android.os.Build;
 import android.widget.TextView;
+
+import com.jcja.fountain_wishes.ApiGemini;
+
 import java.util.Locale;
 
 public class LanguageManager {
@@ -16,7 +20,8 @@ public class LanguageManager {
         String originalText = textView.getText().toString();
 
         // Realiza la traducción usando la API (Google Cloud Translate o Gemini)
-        String translatedText = translate(originalText, languageDestination);
+        String translatedText = translate(((TextView) activity.findViewById(textViewId)).getText().toString(), getDefaultLanguage());
+        //String translatedText = translate(activity.findViewById(textViewId),languageDestination);
 
         // Actualiza el TextView con el texto traducido
         textView.setText(translatedText);
@@ -24,7 +29,10 @@ public class LanguageManager {
 
     private static String translate(String originalText, String languageDestination) {
         // Aquí usarías la API de traducción para traducir el texto// ...
-        String translatedText = "Texto traducido";
-        return translatedText; // Reemplaza con la traducción obtenida de la API
+        ApiGemini apiGemini = new ApiGemini();
+        //String translatedText = "Texto traducido";
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+            return apiGemini.CallGeminiAPI(); // Reemplaza con la traducción obtenida de la API
+        }
     }
 }

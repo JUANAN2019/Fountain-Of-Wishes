@@ -59,16 +59,21 @@ dependencies {
     implementation(libs.legacy.support.v4)
     implementation(libs.recyclerview)
     implementation(libs.volley)
+    implementation(libs.firebase.crashlytics.buildtools)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
 
     // add the dependency for the Google AI client SDK for Android
-    implementation("com.google.ai.client.generativeai:generativeai:0.6.0")
+    implementation("com.google.ai.client.generativeai:generativeai:0.7.0")
 
     // Required for one-shot operations (to use `ListenableFuture` from Guava Android)
     implementation("com.google.guava:guava:31.0.1-android")
 
     // Required for streaming operations (to use `Publisher` from Reactive Streams)
     implementation("org.reactivestreams:reactive-streams:1.0.4")
+//    implementation("com.google.auth:google-auth-library-oauth2-http:1.16.1")
+//    implementation("com.google.api:api-common:2.11.0")
+//    implementation("com.google.cloud:google-cloud-aiplatform:1.26.0")
 }
+
