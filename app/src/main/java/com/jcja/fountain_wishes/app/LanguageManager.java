@@ -18,21 +18,24 @@ public class LanguageManager {
     public static void translateTextOnScreen(Activity activity, int textViewId, String languageDestination) {
         TextView textView = activity.findViewById(textViewId);
         String originalText = textView.getText().toString();
+        System.out.println(originalText);
 
         // Realiza la traducción usando la API (Google Cloud Translate o Gemini)
-        String translatedText = translate(((TextView) activity.findViewById(textViewId)).getText().toString(), getDefaultLanguage());
-        //String translatedText = translate(activity.findViewById(textViewId),languageDestination);
+        //String translatedText = translate(((TextView) activity.findViewById(textViewId)).getText().toString(), getDefaultLanguage());
+        String translatedText = translate(activity, textView,originalText,languageDestination);
 
         // Actualiza el TextView con el texto traducido
         textView.setText(translatedText);
     }
 
-    private static String translate(String originalText, String languageDestination) {
+    private static String translate(Activity activity,  TextView textView, String originalText, String languageDestination) {
         // Aquí usarías la API de traducción para traducir el texto// ...
         ApiGemini apiGemini = new ApiGemini();
         //String translatedText = "Texto traducido";
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-            return apiGemini.CallGeminiAPI(); // Reemplaza con la traducción obtenida de la API
+
+            return apiGemini.CallGeminiAPI(activity, textView, languageDestination); // Reemplaza con la traducción obtenida de la API
         }
+        return "estas en otra version de android";
     }
 }

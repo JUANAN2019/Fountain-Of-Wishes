@@ -1,11 +1,12 @@
 package com.jcja.fountain_wishes;
 
+import android.app.Activity;
 import android.os.Build;
-import android.os.Bundle;
 import android.widget.TextView;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import com.google.ai.client.generativeai.GenerativeModel;
 import com.google.ai.client.generativeai.java.GenerativeModelFutures;
@@ -15,45 +16,43 @@ import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
 
-public class ApiGemini extends AppCompatActivity {
+public class ApiGemini {
+    // ... (otros miembros de la clase) ...
     private String resultText;
     private TextView textView;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        textView = findViewById(R.id.select);
-    }
-
     @RequiresApi(api = Build.VERSION_CODES.P)
-    public String CallGeminiAPI(
-
-    ){
+    public String CallGeminiAPI(Activity activity, TextView textView, String languageDestination) {
         // For text-only input, use the gemini-pro model
-        GenerativeModel gm = new GenerativeModel(/* modelName */ "gemini-pro",
-// Access your API key as a Build Configuration variable (see "Set up your API key" above)
-                /* apiKey */ "AIzaSyDsa8h9ACwbTR6j1GCIivz0FGfGn-NC8V8");
+        GenerativeModel gm = new GenerativeModel(/* modelName */ "gemini-1.5-flash-latest",
+                /* apiKey */ "AIzaSyCQHATpQfoyXOG5dkGoXbk6EUMeEqq6tO4");
         GenerativeModelFutures model = GenerativeModelFutures.from(gm);
-        Content content = new Content.Builder()
-                .addText("traduce este texto que te voy a pasar a español. texto: " + textView.getText().toString())
-                .build();
 
-        ListenableFuture<GenerateContentResponse> response = model.generateContent(content);
+        Content emptyContent = new Content.Builder().build();
+
+        // Llama a generateContent con null temporalmente
+        ListenableFuture<GenerateContentResponse> response = model.generateContent(emptyContent);
         Futures.addCallback(response, new FutureCallback<GenerateContentResponse>() {
             @Override
             public void onSuccess(GenerateContentResponse result) {
-                resultText = result.getText();
-                textView.setText(resultText);
+                // Construye Content aquí, después de que textView esté inicializado
+                Content content = new Content.Builder()
+                        .addText("traduce este texto que te voy a pasar a español. texto: " + textView.getText().toString())
+                        .build();
+
+                // Llama a generateContent con el Content construido
+                ListenableFuture<GenerateContentResponse> newResponse = model.generateContent(content);
+
+                // Maneja la respuesta de newResponse (puedes usar otro FutureCallback o un mecanismo de sincronización)
+                // ...
             }
+
             @Override
             public void onFailure(Throwable t) {
                 textView.setText(t.toString());
             }
-        }, this.getMainExecutor());
+        }, ContextCompat.getMainExecutor(activity));
 
-        return resultText;
+        return resultText; // Puedes devolver un valor temporal o null aquí
     }
-
 }

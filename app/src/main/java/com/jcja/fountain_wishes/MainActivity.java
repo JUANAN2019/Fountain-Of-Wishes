@@ -22,6 +22,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 
+import com.jcja.fountain_wishes.app.LanguageManager;
 import com.jcja.fountain_wishes.app.MainSesion;
 import com.jcja.fountain_wishes.app.NetStatus;
 import com.jcja.fountain_wishes.modelo_3d.Cargarlista3d;
@@ -42,6 +43,12 @@ public class MainActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
         select = findViewById(R.id.select);
+
+
+
+        LanguageManager.translateTextOnScreen(this, R.id.select, "es");
+
+
         ImageView imagenback = findViewById(R.id.imagenback);
         imagenback.setVisibility(View.GONE);
         ImageView imagenmenu = findViewById(R.id.imagenmenu);
@@ -67,6 +74,8 @@ public class MainActivity extends AppCompatActivity {
             alertDialogB.show();
             // iniciar carga
             loadElement();
+
+            LanguageManager.translateTextOnScreen(this, R.id.select, "es");
         }else{
             inicializar();
         }
