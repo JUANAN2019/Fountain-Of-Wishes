@@ -24,8 +24,10 @@ public class ApiGemini {
     @RequiresApi(api = Build.VERSION_CODES.P)
     public String CallGeminiAPI(Activity activity, TextView textView, String languageDestination) {
         // For text-only input, use the gemini-pro model
+
         GenerativeModel gm = new GenerativeModel(/* modelName */ "gemini-1.5-flash-latest",
-                /* apiKey */ "AIzaSyCQHATpQfoyXOG5dkGoXbk6EUMeEqq6tO4");
+                /* apiKey */ "*************");
+
         GenerativeModelFutures model = GenerativeModelFutures.from(gm);
 
         Content emptyContent = new Content.Builder().build();
@@ -55,4 +57,9 @@ public class ApiGemini {
 
         return resultText; // Puedes devolver un valor temporal o null aquí
     }
+
 }
+
+
+
+
