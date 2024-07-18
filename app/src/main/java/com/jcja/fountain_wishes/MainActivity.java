@@ -43,10 +43,11 @@ public class MainActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
         select = findViewById(R.id.select);
+        System.out.println("estoy en oncreate de la mainactiviyt");
 
 
 
-        LanguageManager.translateTextOnScreen(this, R.id.select, "es");
+        //LanguageManager.translateTextOnScreen(this, R.id.select, "es");
 
 
         ImageView imagenback = findViewById(R.id.imagenback);
@@ -76,8 +77,10 @@ public class MainActivity extends AppCompatActivity {
             loadElement();
 
             LanguageManager.translateTextOnScreen(this, R.id.select, "es");
+
         }else{
             inicializar();
+
         }
 
         imagenmenu.setOnClickListener(new View.OnClickListener() {

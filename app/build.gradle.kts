@@ -62,6 +62,7 @@ dependencies {
     implementation(libs.recyclerview)
     implementation(libs.volley)
     implementation(libs.firebase.crashlytics.buildtools)
+    implementation(libs.play.services.fitness)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
