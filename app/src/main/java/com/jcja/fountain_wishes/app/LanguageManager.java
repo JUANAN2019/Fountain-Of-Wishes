@@ -5,6 +5,7 @@ import android.os.Build;
 import android.widget.TextView;
 
 import com.jcja.fountain_wishes.ApiGemini;
+import com.jcja.fountain_wishes.R;
 
 import java.util.Locale;
 
@@ -36,7 +37,17 @@ public class LanguageManager {
         System.out.println("translate");
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
             System.out.println("if translate");
-            return apiGemini.CallGeminiAPI(activity, textView, languageDestination);
+            final String[] texto = {""};
+            apiGemini.CallGeminiAPI(activity, textView, languageDestination, new ApiGemini.ApiCallback() {
+                @Override
+                public void onApiResponse(String result) {
+                    texto[0] = result;
+                    textView.setText(texto[0]); // Actualiza el TextView con el resultado
+                }
+            });
+            System.out.println("texto: "+ texto[0]);
+
+            return texto[0];
             //return apiGemini.CallGeminiAPI(activity, textView, languageDestination); // Reemplaza con la traducción obtenida de la API
         }
         return "estas en otra version de android";

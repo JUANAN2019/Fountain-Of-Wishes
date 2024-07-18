@@ -29,12 +29,17 @@ import java.util.concurrent.CountDownLatch;
 public class ApiGemini {
     // ... (otros miembros de la clase) ...
     private String resultText;
+    private ApiCallback callback;
 
+    public interface ApiCallback {
+        void onApiResponse(String result);
+    }
 
     @RequiresApi(api = Build.VERSION_CODES.P)
-    public String CallGeminiAPI(Activity activity, TextView textView, String languageDestination) {
-
-        // ... (inicialización de GenerativeModel y GenerativeModelFutures)...
+    public void CallGeminiAPI(Activity activity, TextView textView, String languageDestination, ApiCallback callback) {
+        this.callback = callback;
+        String textoOriginal = textView.getText().toString();
+        // ...(inicialización de GenerativeModel y GenerativeModelFutures)...
         System.out.println("callgemini");
         GenerativeModel gm = new GenerativeModel(/* modelName */ "gemini-pro",
                 /* apiKey */ "AIzaSyCQHATpQfoyXOG5dkGoXbk6EUMeEqq6tO4");
@@ -42,11 +47,10 @@ public class ApiGemini {
         GenerativeModelFutures model = GenerativeModelFutures.from(gm);
         Content emptyContent = new Content.Builder().build();
 
-
-        CountDownLatch latch = new CountDownLatch(1); // Inicializa el CountDownLatch
         Content content = new Content.Builder()
-                .addText("¿Cuanto son 2 mas 2?")
+                .addText("traduce el texto que te voy a pasar a " + languageDestination + ". texto: " + textoOriginal )
                 .build();
+
         new AsyncTask<Void, Void, GenerateContentResponse>() {
             @SuppressLint("StaticFieldLeak")
             @Override
@@ -65,17 +69,14 @@ public class ApiGemini {
                 if (response != null) {
                     System.out.println("Respuesta de la API: " + response.getText());
                     resultText = response.getText();
-                    // Actualiza la interfaz de usuario aquí, por ejemplo:
-                    // textView.setText(response.getText());
+                    callback.onApiResponse(resultText);
                 } else {
-                    System.out.println("No se pudo obtener una respuesta de la API");
+                    callback.onApiResponse("Error: No se pudo obtener una respuesta de la API");
                 }
             }
         }.execute();
-        return resultText;
     }
 }
-
 //        try {
 //            // Llamada a la API de Gemini fuera de onSuccess
 //            System.out.println("try");
