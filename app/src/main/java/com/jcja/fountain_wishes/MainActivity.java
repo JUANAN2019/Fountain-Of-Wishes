@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -33,6 +34,8 @@ import java.util.Objects;
 public class MainActivity extends AppCompatActivity {
     private boolean doubleBackToExitPressedOnce = false;
     private Button select;
+//    private TextView titulo;
+//    private TextView descripcion;
     private Integer enviarSeleccion;
     private MainSesion inicilite;
     HashMap<String, String> user = null;
@@ -43,6 +46,10 @@ public class MainActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
         select = findViewById(R.id.select);
+//        titulo = findViewById(R.id.titulo);
+//        descripcion = findViewById(R.id.descripcion);
+        TextView textoBien = findViewById(R.id.textobien);
+        //titleCard = findViewById(R.id.titleCard);
         System.out.println("estoy en oncreate de la mainactiviyt");
 
 
@@ -76,7 +83,9 @@ public class MainActivity extends AppCompatActivity {
             // iniciar carga
             loadElement();
 
-            LanguageManager.translateTextOnScreen(this, R.id.select, "en");
+           LanguageManager.translateTextOnScreen(this, R.id.select, "en");
+//            LanguageManager.translateTextOnScreen(this, R.id.titulo, "en");
+//            LanguageManager.translateTextOnScreen(this, R.id.descripcion, "en");
 
         }else{
             inicializar();
@@ -121,9 +130,12 @@ public class MainActivity extends AppCompatActivity {
             Cargarlista3d listado3d = new Cargarlista3d();
 
             ft.replace(R.id.lista3d, listado3d).commit();
+
         }else{
             Notnet notnet = new Notnet();
             ft.replace(R.id.cargarnet, notnet).commit();
+
+
         }
     }
 

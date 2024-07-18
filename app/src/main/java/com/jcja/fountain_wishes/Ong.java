@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -17,6 +18,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 
+import com.jcja.fountain_wishes.app.LanguageManager;
 import com.jcja.fountain_wishes.app.MainSesion;
 import com.jcja.fountain_wishes.ongs.CargarlistaONG;
 
@@ -27,12 +29,14 @@ public class Ong extends AppCompatActivity {
     private Button next;
     private Integer enviarSeleccion;
     private MainSesion inicilite;
+    private Button selectdos;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.ong);
         next = findViewById(R.id.selectdos);
+        LanguageManager.translateTextOnScreen(this, R.id.selectdos, "en");
         ImageView imagenback = findViewById(R.id.imagenback);
         ImageView imagenmenu = findViewById(R.id.imagenmenu);
         inicilite = new MainSesion(getApplicationContext());
@@ -43,6 +47,7 @@ public class Ong extends AppCompatActivity {
         FragmentTransaction ft = manager.beginTransaction();
         CargarlistaONG listadoOng = new CargarlistaONG();
         ft.replace(R.id.fragmentong, listadoOng).commit();
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.mainong), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
