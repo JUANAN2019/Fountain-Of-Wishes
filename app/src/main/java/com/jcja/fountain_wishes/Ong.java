@@ -29,7 +29,7 @@ public class Ong extends AppCompatActivity {
     private Button next;
     private Integer enviarSeleccion;
     private MainSesion inicilite;
-    private Button selectdos;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +37,8 @@ public class Ong extends AppCompatActivity {
         setContentView(R.layout.ong);
         next = findViewById(R.id.selectdos);
         LanguageManager.translateTextOnScreen(this, R.id.selectdos, "en");
+
+
         ImageView imagenback = findViewById(R.id.imagenback);
         ImageView imagenmenu = findViewById(R.id.imagenmenu);
         inicilite = new MainSesion(getApplicationContext());

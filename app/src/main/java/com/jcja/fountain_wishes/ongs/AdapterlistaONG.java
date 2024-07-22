@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.jcja.fountain_wishes.Ong;
 import com.jcja.fountain_wishes.R;
+import com.jcja.fountain_wishes.app.LanguageManager;
 import com.jcja.fountain_wishes.app.MainSesion;
 import com.squareup.picasso.Picasso;
 
@@ -80,6 +81,7 @@ public class AdapterlistaONG extends BaseAdapter {
         tituloText = lista.getTitulo();
         descripcionText = lista.getDescripcion();
 
+
         holder.titulo.setText(tituloText);
         holder.descripcion.setText(descripcionText);
         holder.imagen.setContentDescription(tituloText);
@@ -119,6 +121,7 @@ public class AdapterlistaONG extends BaseAdapter {
             valoracion = v.findViewById(R.id.valoracion);
             descripcion = v.findViewById(R.id.descripcionong);
             imagen = v.findViewById(R.id.imageView);
+
         }
     }
     public void seleccionar(View view, int select) {
