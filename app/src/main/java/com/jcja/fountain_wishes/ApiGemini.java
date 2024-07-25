@@ -36,9 +36,9 @@ public class ApiGemini {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.P)
-    public void CallGeminiAPI(Activity activity, TextView textView, String languageDestination, ApiCallback callback) {
+    public void CallGeminiAPI(String originalText, String languageDestination, ApiCallback callback) {
         this.callback = callback;
-        String textoOriginal = textView.getText().toString();
+        //String textoOriginal = textView.getText().toString();
         // ...(inicialización de GenerativeModel y GenerativeModelFutures)...
         System.out.println("callgemini");
         GenerativeModel gm = new GenerativeModel(/* modelName */ "gemini-pro",
@@ -48,7 +48,7 @@ public class ApiGemini {
         Content emptyContent = new Content.Builder().build();
 
         Content content = new Content.Builder()
-                .addText("traduce el texto que te voy a pasar a " + languageDestination + ". texto: " + textoOriginal )
+                .addText("traduce el texto que te voy a pasar a " + languageDestination + ". texto: " + originalText )
                 .build();
 
         new AsyncTask<Void, Void, GenerateContentResponse>() {
@@ -67,7 +67,7 @@ public class ApiGemini {
             @Override
             protected void onPostExecute(GenerateContentResponse response) {
                 if (response != null) {
-                    System.out.println("Respuesta de la API: " + response.getText());
+                    //System.out.println("Respuesta de la API: " + response.getText());
                     resultText = response.getText();
                     callback.onApiResponse(resultText);
                 } else {
@@ -77,68 +77,6 @@ public class ApiGemini {
         }.execute();
     }
 }
-//        try {
-//            // Llamada a la API de Gemini fuera de onSuccess
-//            System.out.println("try");
-//            GenerateContentResponse response = model.generateContent(content).get();
-//            System.out.println("Respuesta de la API: " + response.getText());
-//        } catch (Exception e) {
-//            System.out.println("Error en la llamada a la API: " + e.getMessage());
-//        } finally {
-//            System.out.println("Bloque finally ejecutado");
-//        }
-//
-//        try {
-//            ListenableFuture<GenerateContentResponse> response = model.generateContent(emptyContent);
-//            Futures.addCallback(response, new FutureCallback<GenerateContentResponse>() {
-//                @Override
-//                public void onSuccess(GenerateContentResponse result) {
-//                    // ... (construcción de Content) ...
-//                    Content content = new Content.Builder() // Define content aquí
-//                            .addText("traduce este texto que te voy a pasar a español. texto: " + "me llamo pepe")
-//                            .build();
-//
-//                    ListenableFuture<GenerateContentResponse> newResponse = model.generateContent(content);
-//                    System.out.println("sout primer on succes");
-//                    Futures.addCallback(newResponse, new FutureCallback<GenerateContentResponse>() {
-//                        @Override
-//                        public void onSuccess(GenerateContentResponse finalResult) {
-//                            resultText = finalResult.getText();
-//                            latch.countDown(); // Decrementa el CountDownLatch cuando la respuesta esté disponible
-//                            System.out.println("sout primer on succes");
-//
-//                        }
-//
-//                        @Override
-//                        public void onFailure(Throwable t) {
-//                            Log.e("ApiGemini", "Error al llamar a la API de Gemini 1on failure", t);
-//                            textView.setText("Error en la traducción: " + t.getMessage());
-//                            latch.countDown(); // Decrementa el CountDownLatch en caso de error
-//                            System.out.println("sout primer on failure");
-//                        }}, ContextCompat.getMainExecutor(activity));
-//                }
-//
-//                @Override
-//                public void onFailure(Throwable t) {
-//                    Log.e("ApiGemini", "Error al llamar a la API de Gemini", t);
-//                    latch.countDown(); // Decrementa el CountDownLatch en caso de error
-//                    System.out.println("sout segundo on failure");
-//                }
-//            }, ContextCompat.getMainExecutor(activity));
-//        } catch (Exception e) {
-//            System.out.println("Error en model.generateContent: " + e.getMessage());
-//            // Maneja el error de forma apropiada, por ejemplo, mostrando un mensaje al usuario
-//            latch.countDown(); // Asegúrate de decrementar el latch en caso de error
-//        }
-//
-//        try {
-//            latch.await(); // Espera a que el CountDownLatch llegue a 0 (respuesta disponible)
-//            System.out.println("sout try");
-//            return resultText; // Devuelve la respuesta
-//        } catch (InterruptedException e) {
-//            // Maneja la interrupción
-//            System.out.println("sout catch");
-//            return "Error: " + e.getMessage();
-//        }
+
 
 

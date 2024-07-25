@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
             // iniciar carga
             loadElement();
 
-           LanguageManager.translateTextOnScreen(this, R.id.select, "en");
+           LanguageManager.translateTextOnScreen(select,  "en");
 //            LanguageManager.translateTextOnScreen(this, R.id.titulo, "en");
 //            LanguageManager.translateTextOnScreen(this, R.id.descripcion, "en");
 

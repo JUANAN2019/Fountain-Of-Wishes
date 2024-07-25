@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.jcja.fountain_wishes.MainActivity;
 import com.jcja.fountain_wishes.R;
+import com.jcja.fountain_wishes.app.LanguageManager;
 import com.jcja.fountain_wishes.app.MainSesion;
 import com.squareup.picasso.Picasso;
 
@@ -84,12 +85,15 @@ public class Adapterlista3D extends BaseAdapter {
         //holder.id.setText(lista3d.getId());
         // reemplazar para traductor simultaneo con IA:
         //  - titulo
+
         //  - descripcion
         tituloText = lista.getTitulo();
         descripcionText = lista.getDescripcion();
 
         holder.titulo.setText(tituloText);
         holder.descripcion.setText(descripcionText);
+        LanguageManager.translateTextOnScreen(holder.titulo, "en");
+        LanguageManager.translateTextOnScreen(holder.descripcion, "en");
         holder.imagen.setContentDescription(tituloText);
 
         view.setOnLongClickListener(new View.OnLongClickListener(){

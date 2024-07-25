@@ -36,7 +36,7 @@ public class Ong extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.ong);
         next = findViewById(R.id.selectdos);
-        LanguageManager.translateTextOnScreen(this, R.id.selectdos, "en");
+        LanguageManager.translateTextOnScreen(next, "en");
 
 
         ImageView imagenback = findViewById(R.id.imagenback);
