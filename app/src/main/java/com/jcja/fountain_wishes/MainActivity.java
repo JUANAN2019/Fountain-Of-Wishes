@@ -5,6 +5,7 @@ package com.jcja.fountain_wishes;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -34,8 +35,7 @@ import java.util.Objects;
 public class MainActivity extends AppCompatActivity {
     private boolean doubleBackToExitPressedOnce = false;
     private Button select;
-//    private TextView titulo;
-//    private TextView descripcion;
+
     private Integer enviarSeleccion;
     private MainSesion inicilite;
     HashMap<String, String> user = null;
@@ -46,16 +46,6 @@ public class MainActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
         select = findViewById(R.id.select);
-//        titulo = findViewById(R.id.titulo);
-//        descripcion = findViewById(R.id.descripcion);
-        TextView textoBien = findViewById(R.id.textobien);
-        //titleCard = findViewById(R.id.titleCard);
-        System.out.println("estoy en oncreate de la mainactiviyt");
-
-
-
-        //LanguageManager.translateTextOnScreen(this, R.id.select, "es");
-
 
         ImageView imagenback = findViewById(R.id.imagenback);
         imagenback.setVisibility(View.GONE);
@@ -67,25 +57,43 @@ public class MainActivity extends AppCompatActivity {
             AlertDialog.Builder alertDialogB = new AlertDialog.Builder(this);
             LayoutInflater inflaterB = getLayoutInflater();
             View dialogViewB = inflaterB.inflate(R.layout.bienvenida, null);
+            LanguageManager.translateTextOnScreen(dialogViewB.findViewById(R.id.textobien), "en");
             alertDialogB.setCancelable(false);
             alertDialogB.setView(dialogViewB);
-            alertDialogB.setPositiveButton(R.string.empezar,
-                    new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            inicilite.setInit(true, NetStatus.isNetworkAvailable(getApplicationContext()), -1,null, -1, null);
-                            dialog.dismiss();
-                            inicializar();
-                        }
-                    });
-            alertDialogB.create();
-            alertDialogB.show();
+
+            String originalText = getString(R.string.empezar);
+
+            // 2. Traducir el texto (usando ApiGemini)
+            ApiGemini apiGemini = new ApiGemini();
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+                apiGemini.CallGeminiAPI(originalText, "en", new ApiGemini.ApiCallback() {
+                    @Override
+                    public void onApiResponse(String translatedText) {
+                        // 3. Establecer el texto traducido (en el hilo principal de la UI)
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                alertDialogB.setPositiveButton(translatedText,
+                                        new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                inicilite.setInit(true, NetStatus.isNetworkAvailable(getApplicationContext()), -1, null, -1, null);
+                                                dialog.dismiss();
+                                                inicializar();
+                                            }
+                                        });
+                                alertDialogB.create();
+                                alertDialogB.show();
+                            }
+                        });
+                    }
+                });
+            } ;
             // iniciar carga
             loadElement();
 
            LanguageManager.translateTextOnScreen(select,  "en");
-//            LanguageManager.translateTextOnScreen(this, R.id.titulo, "en");
-//            LanguageManager.translateTextOnScreen(this, R.id.descripcion, "en");
+
 
         }else{
             inicializar();
